@@ -1,21 +1,25 @@
 import React, {useState} from 'react'
 import Star from './Star'
-// import {FaStar} from "react-icons/fa";
 
 const createArray = length =>[...Array(length)]
 
-function StarRating({totalStars = 5}) {
-    const [selectedStar] = useState(3); 
+function StarRating({style={}, totalStars = 5, ...props}) {
+    const [selectedStars, setSelectedStars] = useState(0); 
 
     return (
-        <>
+        <div style={{padding: "5px", ...style}} {...props}>
         {createArray(totalStars).map((n, i) => (
-        <Star key={i} selected={selectedStar}/>
+        <Star 
+        key={i} 
+        selected={selectedStars > i}
+        onSelect={()=> setSelectedStars(i+1)}
+        
+        />
         ))}
           <p>
-              {selectedStar} of {totalStars}
+              {selectedStars} of {totalStars}
           </p>
-        </>
+        </div>
     );      
     
 }

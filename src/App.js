@@ -3,9 +3,9 @@ import StarRating from './components/StarRating';
 
 function App() {
   return (
-    <main className='App'>
-     <StarRating />
-    </main>
+     <StarRating 
+     style={{backgroundColor: "lightblue"}}
+     onDoubleClick ={e=> alert("double click")} />
   );
 }
 
